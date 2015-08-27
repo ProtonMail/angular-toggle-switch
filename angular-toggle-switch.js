@@ -5,13 +5,15 @@
     this.onLabel = 'On';
     this.offLabel = 'Off';
     this.knobLabel = '\u00a0';
+    this.reverse = false;
 
     var self = this;
     this.$get = function() {
       return {
         onLabel: self.onLabel,
         offLabel: self.offLabel,
-        knobLabel: self.knobLabel
+        knobLabel: self.knobLabel,
+        reverse: self.reverse
       };
     };
   }]);
