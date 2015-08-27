@@ -72,7 +72,12 @@
         });
 
         ngModelCtrl.$render = function(){
+          if (scope.reverse) {
             scope.model = ngModelCtrl.$viewValue;
+          }
+          else {
+            ngModelCtrl.$setViewValue(scope.model);
+          }
         };
 
         scope.toggle = function toggle() {
