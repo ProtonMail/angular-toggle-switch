@@ -25,7 +25,8 @@
         disabled: '@',
         onLabel: '@',
         offLabel: '@',
-        knobLabel: '@'
+        knobLabel: '@',
+        reverse: '@'
       },
       template: '<div role="radio" class="toggle-switch" ng-class="{ \'disabled\': disabled }">' +
           '<div class="toggle-switch-animate" ng-class="{\'switch-off\': !model, \'switch-on\': model}">' +
@@ -38,6 +39,7 @@
         if (!attrs.onLabel) { attrs.onLabel = toggleSwitchConfig.onLabel; }
         if (!attrs.offLabel) { attrs.offLabel = toggleSwitchConfig.offLabel; }
         if (!attrs.knobLabel) { attrs.knobLabel = toggleSwitchConfig.knobLabel; }
+        if (!attrs.reverse) { attrs.reverse = toggleSwitchConfig.reverse; }
 
         return this.link;
       },
@@ -74,7 +76,12 @@
         scope.toggle = function toggle() {
           if(!scope.disabled) {
             scope.model = !scope.model;
-            ngModelCtrl.$setViewValue(scope.model);
+            if (scope.reverse) {
+              ngModelCtrl.$setViewValue(!scope.model);
+            }
+            else {
+              ngModelCtrl.$setViewValue(scope.model);
+            }
           }
         };
       }
