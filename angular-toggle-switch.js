@@ -73,10 +73,10 @@
 
         ngModelCtrl.$render = function(){
           if (scope.reverse) {
-            scope.model = ngModelCtrl.$viewValue;
+            scope.model = !ngModelCtrl.$viewValue;
           }
           else {
-            ngModelCtrl.$setViewValue(scope.model);
+            scope.model = ngModelCtrl.$viewValue;
           }
         };
 
